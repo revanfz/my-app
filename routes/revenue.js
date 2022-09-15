@@ -16,9 +16,9 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { price, date } = req.body;
+    const { income, date } = req.body;
     const newRevenue = new Revenue({
-        price, date
+        income, date
     });
     try {
         if (!newRevenue) {
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
         if (!revenue) {
             throw new Error('Terjadi kesalahan saat menyimpan data');
         }
-        res.status(200).json({ message: `Transaksi ${price} pada ${date.toString()} berhasil disimpan`});
+        res.status(200).json({ message: `Transaksi ${income} pada ${date} berhasil disimpan`});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
