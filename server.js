@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use('/api/revenue', transactionRoutes);
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Hello World' });
+    res.send('Hello World');
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
