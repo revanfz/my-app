@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 require('dotenv').config();
+
 
 const transactionRoutes = require('./routes/register'); 
 const pendapatanRoutes = require('./routes/pendapatan');
@@ -28,7 +30,7 @@ app.use('/api/register', transactionRoutes);
 app.use('/api/pendapatan', pendapatanRoutes);
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/src/app.html');
+    res.sendFile(path.resolve(__dirname, 'my-app', 'src', 'app.html'));
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
