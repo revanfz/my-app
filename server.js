@@ -21,12 +21,14 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static('my-app/static'));
+
 
 app.use('/api/register', transactionRoutes);
 app.use('/api/pendapatan', pendapatanRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/src/app.html');
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
