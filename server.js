@@ -4,7 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const transactionRoutes = require('./routes/revenue'); 
+const transactionRoutes = require('./routes/register'); 
+const pendapatanRoutes = require('./routes/pendapatan');
 
 mongoose
     .connect(process.env.DB_URI,
@@ -21,7 +22,8 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/api/revenue', transactionRoutes);
+app.use('/api/register', transactionRoutes);
+app.use('/api/pendapatan', pendapatanRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
